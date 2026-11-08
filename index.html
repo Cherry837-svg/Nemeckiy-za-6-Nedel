@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моё Медиа Хранилище</title>
+    <style>
+        :root {
+            /* Светло-сиреневый нежный фон */
+            --bg-color: #f3effa; 
+            /* Чистый белый цвет для карточек с файлами */
+            --card-bg: #ffffff; 
+            /* Глубокий темно-фиолетовый цвет текста для отличной читаемости */
+            --text-color: #2d2438; 
+            /* Насыщенный сиренево-лавандовый для главных кнопок */
+            --accent-color: #8e6abf; 
+            /* Мягкие сиреневые границы */
+            --border-color: #decfe6; 
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 12px;
+            color: #4a3563;
+            font-size: 2rem;
+        }
+        .category {
+            margin-bottom: 35px;
+        }
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #5c437a;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(142, 106, 191, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(142, 106, 191, 0.12);
+        }
+        .file-name {
+            font-weight: 600;
+            word-break: break-all;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        a.btn, button.btn {
+            background-color: #fcfaff;
+            color: #6a4d8c;
+            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            transition: all 0.15s;
+        }
+        a.btn:hover, button.btn:hover {
+            background-color: #f1e9f7;
+            border-color: var(--accent-color);
+        }
+        a.btn.primary {
+            background-color: var(--accent-color);
+            color: #fff;
+            border: 1px solid var(--accent-color);
+        }
+        a.btn.primary:hover {
+            background-color: #7955a8;
+            border-color: #7955a8;
+        }
+        audio, video {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+        img.preview {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📂 Моё Медиа Хранилище</h1>
+
+    <!-- АУДИО СЕКЦИЯ -->
+    <div class="category">
+        <div class="category-title">🎵 Аудиофайлы (MP3)</div>
+        <div class="grid">
+            <div class="card">
+                <div class="file-name">1.mp3</div>
+                <audio controls preload="none">
+                    <source src="1.mp3" type="audio/mpeg">
+                </audio>
+                <div class="btn-group">
+                    <a href="1.mp3" download class="btn primary">📥 Скачать</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="file-name">2.mp3</div>
+                <audio controls preload="none">
+                    <source src="2.mp3" type="audio/mpeg">
+                </audio>
+                <div class="btn-group">
+                    <a href="2.mp3" download class="btn primary">📥 Скачать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ДОКУМЕНТЫ -->
+    <div class="category">
+        <div class="category-title">📄 Документы (PDF)</div>
+        <div class="grid">
+            <div class="card">
+                <div class="file-name">Nemeckyy_za_6_nedel.pdf</div>
+                <div class="btn-group">
+                    <a href="Nemeckyy_za_6_nedel.pdf" target="_blank" class="btn">👁 Смотреть</a>
+                    <a href="Nemeckyy_za_6_nedel.pdf" download class="btn primary">📥 Скачать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ИЗОБРАЖЕНИЯ -->
+    <div class="category">
+        <div class="category-title">🖼 Изображения (JPEG / PNG)</div>
+        <div class="grid">
+            <div class="card">
+                <div class="file-name">example.jpg</div>
+                <img src="example.jpg" class="preview" alt="Превью">
+                <div class="btn-group">
+                    <a href="example.jpg" target="_blank" class="btn">👁 Открыть</a>
+                    <a href="example.jpg" download class="btn primary">📥 Скачать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ВИДЕО -->
+    <div class="category">
+        <div class="category-title">🎥 Видеоролики (MP4)</div>
+        <div class="grid">
+            <div class="card">
+                <div class="file-name">video.mp4</div>
+                <video controls preload="none">
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+                <div class="btn-group">
+                    <a href="video.mp4" download class="btn primary">📥 Скачать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
