@@ -123,6 +123,44 @@
     <meta name="robots" content="noindex, nofollow">
 </head>
 <body>
+ <div class="category">
+    <div class="category-title">🌐 Мои сайты</div>
+    <ul id="sites-list" style="line-height: 1.8; font-size: 16px;">
+        <li>Загрузка списка сайтов...</li>
+    </ul>
+</div>
+
+<script>
+    fetch('https://github.com')
+        .then(response => response.json())
+        .then(repos => {
+            const list = document.getElementById('sites-list');
+            list.innerHTML = ''; 
+
+            repos.forEach(repo => {
+                // Показываем только те репозитории, где включен сайт (GitHub Pages)
+                if (repo.has_pages) {
+                    const li = document.createElement('li');
+                    const siteLink = document.createElement('a');
+                    
+                    // Ссылка сразу на готовый сайт
+                    siteLink.href = `https://github.io{repo.name}/`;
+                    
+                    // Делаем название красивым (убираем дефисы)
+                    siteLink.textContent = repo.name.replace(/-/g, ' ');
+                    siteLink.target = '_blank'; // Открывать в новой вкладке
+                    
+                    li.appendChild(siteLink);
+                    list.appendChild(li);
+                }
+            });
+        })
+        .catch(error => {
+            document.getElementById('sites-list').innerHTML = '<li>Не удалось загрузить список</li>';
+        });
+</script>
+
+   
 
 <div class="container">
     <h1>📂 Моё Медиа Хранилище</h1>
